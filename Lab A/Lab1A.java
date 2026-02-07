@@ -383,7 +383,7 @@ public class Lab1A {
 
         // System.out.println(arrayAverage(someArray));
 
-        System.out.println(has22(new int[] { 1, 2, 1, 2 }));
+        // System.out.println(has22(new int[] { 1, 2, 1, 2 }));
 
     }
 }
