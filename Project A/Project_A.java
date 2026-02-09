@@ -122,7 +122,7 @@ public class Project_A {
      */
     public static boolean isPalindrome(String input) {
         // TODO
-        input=input.toLowerCase();
+        input = input.toLowerCase();
 
         int length = input.length();
         int middle = Math.floorDiv(length, 2);
@@ -157,8 +157,8 @@ public class Project_A {
 
         for (int index = 0; index < input.length(); index++) {
             char c = input.charAt(index);
-            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || 
-                c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
                 vowelCount++;
             }
         }
@@ -188,7 +188,22 @@ public class Project_A {
      */
     public static int[] reverseArray(int[] values) {
         // TODO
-        return null; // placeholder
+        int forward = 0; // forward index
+        int back = values.length - 1; // backwards index
+
+        // while (forward<values.length && back>=0) {
+        while (forward < back) {
+            int firstElement = values[forward];
+            int secondElement = values[back];
+
+            values[forward] = secondElement;
+            values[back] = firstElement;
+
+            forward++;
+            back--;
+        }
+
+        return values;
     }
 
     /**
@@ -202,7 +217,9 @@ public class Project_A {
      */
     public static int[] swap(int a, int b) {
         // TODO
-        return null; // placeholder
+        int[] newArray = { b, a };
+
+        return newArray; // placeholder
     }
 
     /**
@@ -223,7 +240,11 @@ public class Project_A {
      */
     public static int[] concatenateArrays(int[] a, int[] b) {
         // TODO
-        return null; // placeholder
+        int[] newArray = new int[a.length + b.length];
+
+        System.arraycopy(a, 0, newArray, 0, a.length);
+        System.arraycopy(b, 0, newArray, a.length, b.length);
+        return newArray;
     }
 
     /**
@@ -251,9 +272,48 @@ public class Project_A {
      * @param input the string to classify
      * @return 1 if all uppercase, 0 if all lowercase, -1 if mixed
      */
+
+    private static boolean isLowerCase(char c) {
+        if (c >= 'a' && c <= 'z') {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isUpperCase(char c) {
+        if (c >= 'A' && c <= 'Z') {
+            return true;
+        }
+        return false;
+    }
+
     public static int checkCase(String input) {
         // TODO
-        return 0; // placeholder
+
+        if (isLowerCase(input.charAt(0))) {
+            // the first charachter is lower case
+            // then check if all are lowercase
+
+            for (int index = 0; index < input.length(); index++) {
+                char c = input.charAt(index);
+                if (!isLowerCase(c)) {
+                    return -1;
+                }
+            }
+
+            return 0;
+        } else {
+            // the first charachter is upper case
+            // then check if all are uppercase
+
+            for (int index = 0; index < input.length(); index++) {
+                char c = input.charAt(index);
+                if (!isUpperCase(c)) {
+                    return -1;
+                }
+            }
+            return 1;
+        }
     }
 
     /**
@@ -273,6 +333,21 @@ public class Project_A {
      */
     public static boolean hasAdjacentValue(int[] nums, int target) {
         // TODO
+
+        int index=0;
+
+        for (int item:nums){
+            if (index==nums.length-1){
+                break;
+            }
+
+            if (item==target && item == nums[index+1]){
+                return true;
+            }
+
+            index++;
+        }
+
         return false; // placeholder
     }
 
@@ -293,6 +368,16 @@ public class Project_A {
      */
     public static boolean hasDuplicates(int[] values) {
         // TODO
+        int middle = Math.floorDiv(values.length, 2);
+        int length = values.length;
+
+        for(int index=0;index<middle;index++){
+            int backIndex=length-index-1;
+            if(values[index]==values[backIndex]){
+                return true;
+            }
+        }
+
         return false; // placeholder
     }
 }
