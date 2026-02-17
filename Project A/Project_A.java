@@ -309,6 +309,8 @@ public class Project_A {
             for (int index = 0; index < input.length(); index++) {
                 char c = input.charAt(index);
                 if (!isUpperCase(c)) {
+
+                    
                     return -1;
                 }
             }
