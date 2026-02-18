@@ -1,5 +1,5 @@
 /**
- * Author: TODO-FirstName TODO-LastName
+ * Author: Nehemia Kaaya
  * 
  * Purpose of the class: A basic implementation of an ArrayList.
  * that provides basic operations
@@ -54,7 +54,6 @@ public class ArrayList<T> {
         if (size == arr.length) {
             // no of items equals capacity
             changeCapacity(size * 2);
-            // TODO: finish this, add item after reiniting the arr
         }
         arr[size] = item;
         size++;
@@ -68,7 +67,6 @@ public class ArrayList<T> {
      * @return the element at the specified position in the list
      */
     public T get(int index) {
-        // TODO
         return arr[index];
     }
 
@@ -79,7 +77,6 @@ public class ArrayList<T> {
      * @param index the position of the list element to set
      */
     public void set(int index, T item) {
-        // TODO
         arr[index] = item;
     }
 
