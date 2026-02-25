@@ -27,7 +27,7 @@ class Simulation {
 
             double playerWinRate = ((double) playerWinCount / iterationCount) * 100;
             double dealerWinRate = ((double) dealerWinCount / iterationCount) * 100;
-            double pushRate = (pushCount / iterationCount) * 100;
+            double pushRate = ((double) pushCount / iterationCount) * 100;
 
             // return {playerWinCount, dealerWinRate, push};
             results[i] = new Results(iterationCount, playerWinRate, dealerWinRate, pushRate);
@@ -55,12 +55,12 @@ class Results { // I know, I know. Extra but why not.
     }
 
     public String toString() {
-        return "%s\tPlayer win rate: %s\tDealer win rate: %s\tPush rate:%s"
+        return "%s\tPlayer win rate: %s\tDealer win rate: %s\tPush rate: %s"
             .formatted(
                 iterationCount,
                 String.format("%.2f", playerWinRate),
                 String.format("%.2f", dealerWinRate), 
-                pushRate
+                String.format("%.2f", pushRate)
             );
     }
 
