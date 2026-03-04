@@ -18,19 +18,7 @@ public class Grid {
         for (int i = 0; i < arr.length; i++) {
             int[] item = arr[i];
 
-            output += "\n[";
-
-            for (int nestedIndex = 0; nestedIndex < item.length; nestedIndex++) {
-                int nestedItem = item[nestedIndex];
-
-                output += String.format("%2s", nestedItem);
-                if (nestedIndex < (item.length - 1)) {
-                    output += ", ";
-                }
-
-            }
-
-            output += "]";
+            output += "\n%s".formatted(arraysToString(item));
 
             if (i < (arr.length - 1)) {
                 output += ", ";
