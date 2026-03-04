@@ -1,10 +1,4 @@
-// size( ): Returns the number of elements in the list.
-// isEmpty( ): Returns true if the list is empty, and false otherwise.
-// first( ): Returns (but does not remove) the first element in the list.
-// last( ): Returns (but does not remove) the last element in the list.
-// addFirst(e): Adds a new element to the front of the list.
-// addLast(e): Adds a new element to the end of the list.
-// removeFirst( ):
+import java.util.Iterator;
 
 public class LinkedList<T> {
 
@@ -40,6 +34,13 @@ public class LinkedList<T> {
 
     public int size(){
         return this.size;
+    }
+
+    public void clear(){
+        // should I delete each referenced item?
+        this.size=0;
+        this.next=null;
+        this.tail=null;
     }
 
     public boolean isEmpty(){

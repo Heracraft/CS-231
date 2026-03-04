@@ -36,7 +36,7 @@ public class Landscape {
      * @return a matrix string.
      */
 
-    private <T> String arrayToString(T[] arr) {
+    public static <T> String arrayToString(T[] arr) {
         String output = "";
         for (int i = 0; i < arr.length; i++) {
             output += String.format("%2s", arr[i]);
@@ -45,7 +45,7 @@ public class Landscape {
         return output;
     }
 
-    private <T> String arrayToString(T[][] arr) {
+    public static <T> String arrayToString(T[][] arr) {
         String output = "";
         for (int i = 0; i < arr.length; i++) {
             T[] item = arr[i];

@@ -1,3 +1,6 @@
 *.class
 *.zip
 *.txt
+
+# ignore frames for conway gif
+/**/frames 
