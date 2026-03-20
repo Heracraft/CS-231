@@ -1,114 +1,127 @@
-import java.util.Random;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Running LinkedList Practice Problems...");
 
-        LinkedList<Integer> list = new LinkedList<>();
-        
-        System.out.println("\n--- Testing Empty List ---");
-        // System.out.println("Max (expect null): " + max(list));
-        // System.out.println("Last (expect null): " + last(list));
-        // System.out.println("Count of 5 (expect 0): " + count(list, 5));
+    // Problem 1 to 5 are conceptual problems.
+    // We will set up the programming problems (6 to 10).
 
-        // Add some elements. Remember add(item) inserts at the beginning (stack-like)
-        list.add(10);
-        list.add(20);
-        list.add(5);
-        list.add(30);
-        
-        // Structure: 30 -> 5 -> 20 -> 10
-        System.out.println("\n--- Testing Populated List ---");
-        System.out.println("List: " + list);
-        // Uncomment these as you implement the methods
-        // System.out.println("Max (expect 30): " + max(list));
-        // System.out.println("Last (expect 10): " + last(list));
-        // System.out.println("Count of 10 (expect 1): " + count(list, 10));
-        // System.out.println("Adj Equal (expect false): " + hasAdjacentEqual(list));
-        // System.out.println("Middle (expect 20 or 5): " + getMiddle(list));
-
-        list.add(30); 
-        System.out.println("After adding duplicate at start: " + list);
-        // System.out.println("Adj Equal (expect true): " + hasAdjacentEqual(list));
-
-        System.out.println("The max: %s".formatted(max(list)));
-        System.out.println("The last: %s".formatted(last(list)));
+    /**
+     * Problem 6 — Rotate Queue
+     * Write a method that moves the first element of the queue to the back.
+     */
+    public static void rotateQueue(Queue<Integer> q) {
+        // TODO: Implement this method
+        Integer x = q.poll();
+        q.offer(x);
     }
 
     /**
-     * 1. Find the Maximum Value
-     * Return the largest element stored in the list. Assume the elements implement Comparable<E>.
-     * Return null if the list is empty.
+     * Problem 7 — Rotate k Positions
+     * Write a method that rotates a queue to the left k positions.
+     * Example: [1, 2, 3, 4, 5], k = 2 -> Result: [3, 4, 5, 1, 2]
      */
-    public static <E extends Comparable<E>> E max(LinkedList<E> list) {
-        // Since Node is an inner class (non-static), we must qualify it with the instance type if we want specific typing,
-        // or rely on raw type LinkedList.Node if generic parameters are tricky.
-        // However, list.head is accessible here because we are in the same package and head is protected.
-        // 
-        // Hint: Use `LinkedList<E>.Node` if your compiler allows, or just `var` (Java 10+), 
-        //       or cast from raw `LinkedList.Node` to get data.
-        
-        // Example start:
-        // if (list.size() == 0) return null;
-        // var current = list.head; // assuming head is accessible
-        
-        if (list.head == null) return null;
-        
-        LinkedList.Node currentNode = list.head;
+    public static void rotateK(Queue<Integer> q, int k) {
+        // TODO: Implement this method
+        for (int i = 0; i < k; i++) {
+            Integer x = q.poll();
+            q.offer(x);
+        }
 
-        E max = (E) list.head.getData();
+    }
 
-        while(currentNode != null){
-            E current = (E) currentNode.getData();
-            if (current.compareTo(max) > 0){
-                max = current;
+    /**
+     * Problem 8 — Sum of Queue
+     * Write a method that returns the sum of all elements in the queue.
+     */
+    public static int sumQueue(Queue<Integer> q) {
+        // TODO: Implement this method
+        int sum = 0;
+
+        for (int item : q) {
+            sum += item;
+        }
+
+        return sum;
+    }
+
+    /**
+     * Problem 9 — Count Even Numbers
+     * Write a method that counts how many even numbers appear in a queue.
+     */
+    public static int countEven(Queue<Integer> q) {
+        // TODO: Implement this method
+        int noOfEven = 0;
+
+        for (int item : q) {
+            if(item%2==0){
+                noOfEven++;
             }
-            currentNode=currentNode.getNext();
         }
 
-        return max;
+        return noOfEven;
     }
 
     /**
-     * 2. Find the Last Element
-     * Return the value stored in the final node of the list. Return null if the list is empty.
+     * Problem 10 — Get Last Element
+     * Write a method that returns the last element of the queue.
+     * You may only use poll(), offer(), and size().
      */
-    public static <E> E last(LinkedList<E> list) {
-        LinkedList<E>.Node currentNode =null;
-        E last = null;
+    public static int getLast(Queue<Integer> q) {
+        // TODO: Implement this method
 
-        if (list.head!=null){
-            currentNode=list.head;
+        Integer current=q.peek();
+
+        for(int i=0;i<q.size();i++){
+            current=q.poll();
+            q.offer(current);
         }
 
-        while (currentNode!=null) {
-            currentNode=currentNode.getNext();
-        }
-        
-        return currentNode.getData(); // TODO
+        return current;
     }
 
-    /**
-     * 3. Count Occurrences
-     * Return the number of nodes whose value equals value.
-     */
-    public static <E> int count(LinkedList<E> list, E value) {
-        return 0; // TODO
-    }
+    public static void main(String[] args) {
+        System.out.println("Running Queue Practice Tests...\n");
 
-    /**
-     * 4. Detect Adjacent Equal Values
-     * Return true if the list contains two adjacent nodes storing equal values. Otherwise return false.
-     */
-    public static boolean hasAdjacentEqual(LinkedList<?> list) {
-        return false; // TODO
-    }
+        // Helper method to create a queue with initial values
+        // Note: Using the LinkedList class which implements Queue
 
-    /**
-     * 5. Return the Middle Element
-     * Return the value stored in the middle node of the list.
-     */
-    public static <E> E getMiddle(LinkedList<E> list) {
-        return null; // TODO
+        System.out.println("--- Problem 6: Rotate Queue ---");
+        Queue<Integer> q6 = new LinkedList<Integer>();
+        for (int i = 1; i <= 5; i++)
+            q6.offer(i);
+        System.out.println("Before: " + q6); // Expected: 1 -> 2 -> 3 -> 4 -> 5
+        rotateQueue(q6);
+        System.out.println("After:  " + q6 + "\n");
+
+        System.out.println("--- Problem 7: Rotate K Positions (k=2) ---");
+        Queue<Integer> q7 = new LinkedList<Integer>();
+        for (int i = 1; i <= 5; i++)
+            q7.offer(i);
+        System.out.println("Before: " + q7); // Expected: 1 -> 2 -> 3 -> 4 -> 5
+        rotateK(q7, 2);
+        System.out.println("After:  " + q7 + "\n");
+
+        System.out.println("--- Problem 8: Sum of Queue ---");
+        Queue<Integer> q8 = new LinkedList<Integer>();
+        for (int i = 1; i <= 5; i++)
+            q8.offer(i);
+        System.out.println("Queue: " + q8);
+        System.out.println("Sum:   " + sumQueue(q8) + " (Expected: 15)\n");
+
+        System.out.println("--- Problem 9: Count Even Numbers ---");
+        Queue<Integer> q9 = new LinkedList<Integer>();
+        for (int i = 1; i <= 5; i++)
+            q9.offer(i);
+        System.out.println("Queue: " + q9);
+        System.out.println("Count: " + countEven(q9) + " (Expected: 2)\n");
+
+        System.out.println("--- Problem 10: Get Last Element ---");
+        Queue<Integer> q10 = new LinkedList<Integer>();
+        for (int i = 1; i <= 5; i++)
+            q10.offer(i);
+        System.out.println("Queue: " + q10);
+        System.out.println("Last:  " + getLast(q10) + " (Expected: 5)\n");
+
     }
 }

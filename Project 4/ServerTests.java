@@ -21,54 +21,60 @@ public class ServerTests {
         server.processTo( j1.getArrivalTime() );
         server.addJob( j1 );
         System.out.println( server.remainingWorkInQueue() + " == 3.5" );
-        assert server.remainingWorkInQueue() == 3.5;
         if (server.remainingWorkInQueue() == 3.5 ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: remainingWorkInQueue() expected 3.5, got " + server.remainingWorkInQueue());
+        }
 
         Job j2 = new Job(2.5 , 0.5);
         server.processTo( j2.getArrivalTime() );
         server.addJob( j2 );
         System.out.println( server.remainingWorkInQueue() + " == 1.5" );
-        assert server.remainingWorkInQueue() == 1.5;
         if (server.remainingWorkInQueue() == 1.5 ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: remainingWorkInQueue() expected 1.5, got " + server.remainingWorkInQueue());
+        }
 
         Job j3 = new Job(4.5 , 1.5);
         server.processTo( j3.getArrivalTime() );
         server.addJob( j3 );
         System.out.println( server.remainingWorkInQueue() + " == 1.5" );
-        assert server.remainingWorkInQueue() == 1.5;
         if (server.remainingWorkInQueue() == 1.5 ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: remainingWorkInQueue() expected 1.5, got " + server.remainingWorkInQueue());
+        }
 
         Job j4 = new Job(5.0 , 2.0);
         server.processTo( j4.getArrivalTime() );
         server.addJob( j4 );
         System.out.println( server.remainingWorkInQueue() + " == 3.0" );
-        assert server.remainingWorkInQueue() == 3.0;
         if (server.remainingWorkInQueue() == 3.0 ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: remainingWorkInQueue() expected 3.0, got " + server.remainingWorkInQueue());
+        }
 
         //Finish up the last job
         server.processTo( j4.getArrivalTime() + j4.getProcessingTimeNeeded() + server.remainingWorkInQueue() );
-        System.out.println( server.remainingWorkInQueue() + " == 0." );
-        assert server.remainingWorkInQueue() == 0;
+        System.out.println( server.remainingWorkInQueue() + " == 0.0" );
         if (server.remainingWorkInQueue() == 0. ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: remainingWorkInQueue() expected 0.0, got " + server.remainingWorkInQueue());
+        }
 
         //Compute total waiting time
         //Note, waiting time includes processing time and time spent waiting to be processed
         //This isn't worked out in the slides, but you have enough information to do it yourself if you'd like
         System.out.println( server.getTotalWaitingTime() + " == 9.5" );
-        assert server.getTotalWaitingTime() == 9.5;
         if (server.getTotalWaitingTime() == 9.5 ) {
        		score += 0.5 ;
-       	}
+       	} else {
+            System.out.println("Test Failed: getTotalWaitingTime() expected 9.5, got " + server.getTotalWaitingTime());
+        }
 
         return score ;
     }

@@ -3,6 +3,7 @@
   Updated by Brian Eastwood and Stephanie Taylor more recently
   Updated by Bruce again in Fall 2018
   Updated by Bender in Spring 2023
+  modified to scale for high ddpi screens
 
   Creates a window using the JFrame class.
 
@@ -30,8 +31,9 @@ public class ServerFarmViz {
     protected JobDispatcher dispatcher;
     private LandscapePanel canvas;
     private boolean showViz ;
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 400;
+    public static final double SCALE = 2.0; // UI Scaling factor for high DPI screens
+    public static final int WIDTH = (int) (800 * SCALE);
+    public static final int HEIGHT = (int) (400 * SCALE);
 
     /**
      * Initializes a display window for a Landscape.
